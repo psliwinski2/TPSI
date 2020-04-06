@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Java Web - laboratorium 4</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div><h1>Witamy</h1></div>
+        <form action='/lab4/hello' method='post'>
+            <table style="text-align: center">
+                <tr>
+                    <th>Przedstaw się ładnie:</th>
+                </tr>
+                <tr>
+                    <th>
+                        Imię:
+                    </th>
+                    <th>
+                        <input type='text' name='firstName'>
+                    </th>           
+                </tr>
+                <tr>
+                    <th>
+                        Nazwisko:
+                    </th>
+                    <th>
+                        <input type='text' name='lastName'>
+                    </th>  
+                </tr>
+                <tr>
+                    <th>
+                        Email:
+                    </th>
+                    <th>
+                        <input type='text' name='email'>
+                    </th>  
+                    <th>
+                        <input type='submit'>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <p><a href="/lab4/personList">PersonListServlet</a></p>
+                    </th>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
+
+
+
