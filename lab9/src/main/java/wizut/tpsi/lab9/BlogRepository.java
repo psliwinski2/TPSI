@@ -53,14 +53,15 @@ public class BlogRepository {
 		}
 	}
 
-	public void removePost(BlogPost post) throws SQLException {
-		String sqlQuery = "delete from blog_post where id=?";
-		try (Connection connection = dataSource.getConnection()) {
-			PreparedStatement preparedStatement = connection.prepareStatement(sqlQuery);
+	public void deletePost(long id) throws SQLException {
+		String sql = "delete from blog_post where id=?";
 
-			preparedStatement.setString(1, post.getId().toString());
+		try (Connection con = dataSource.getConnection(); PreparedStatement ps = con.prepareStatement(sql)) {
 
-			preparedStatement.executeUpdate();
+			ps.setLong(1, id);
+
+			ps.executeUpdate();
 		}
 	}
+
 }

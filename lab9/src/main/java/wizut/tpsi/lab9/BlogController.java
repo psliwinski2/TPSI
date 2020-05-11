@@ -13,12 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BlogController {
 
 	@Autowired
-	private BlogRepository blogRepository;
+	BlogRepository blogRepository;
 
 	@RequestMapping("/")
 	public String home(Model model) throws SQLException {
-		List<BlogPost> allPosts = blogRepository.getAllPosts();
-		model.addAttribute("allPosts", allPosts);
+		List<BlogPost> blogPostList = blogRepository.getAllPosts();
+
+		model.addAttribute("blogPosts", blogPostList);
+
 		return "index";
 	}
 
@@ -28,9 +30,10 @@ public class BlogController {
 		return "redirect:/";
 	}
 
-	@PostMapping("/removepost")
-	public String removePost(BlogPost post) throws SQLException {
-		blogRepository.removePost(post);
+	@PostMapping("/deletepost")
+	public String deletePost(long id) throws SQLException {
+		blogRepository.deletePost(id);
 		return "redirect:/";
 	}
+
 }

@@ -1,56 +1,48 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      layout:decorator="layout">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>blog</title>
-    <meta charset="UTF-8" />
+    <title>Blog</title>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
     <style>
     table {
-  border-collapse: collapse;
-	}
-    
+    border-collapse: collapse;
+    }
     table, th, td {
-  border: 1px solid black;
-	}
+    border: 1px solid black;
+    }
     </style>
-</head>
 
+
+    <title>Blog</title>
+</head>
 <body>
 
-<section layout:fragment="blogPosts">
+    <form action="/newpost" method="POST">
+        Tytuł: <input type="text" class="form-control"  name="title" size="199"/><br>
+        Treść: <textarea name="content" class="form-control"  cols="150" rows="5"></textarea>
 
-    
-    <form action="/newpost" method="post">
-        Tytuł: <input type="text" name="title" size="150"/><br>
-        Treść: <br><input type="content" name="content" size="157"/><br>
-        <input type="submit" value="Dodaj wpis" />
+        <input type="submit" value="Dodaj wpis"/>
     </form>
-
-    
     <table class="table-striped">
-        <tr>
+		<tr>
             <th>id</th>
             <th>title</th>
             <th>content</th>
             <th>remove</th>
         </tr>
-
-        <tr th:each="blogPost, iterStat: ${allPosts}">
-            <td th:text="${allPosts.get(iterStat.index).getId()}"></td>
-            <td th:text="${allPosts.get(iterStat.index).getTitle()}"></td>
-            <td th:text="${allPosts.get(iterStat.index).getContent()}"></td>
-            <td>
-                <form action="/removepost" method="post">
-                    <button name="id" th:value="${allPosts.get(iterStat.index).getId()}">Usuń</button>
-                </form>
-            </td>
-        </tr>
+    <tr th:each="blogPost : ${blogPosts}" >
+		<td th:text="${blogPost.id}"></td>	
+        <td th:text="${blogPost.title}"></td>
+        <td th:text="${blogPost.content}"></td>
+ <td>
+        <form action="/deletepost" method="POST">
+            <input id="id" name="id" th:value="${blogPost.id}" hidden/>
+            <input type="submit" class="btn btn-danger" value="Usuń" />
+        </form>
+ <td>
+    </tr>
     </table>
-
-
-</section>
-
 </body>
 </html>

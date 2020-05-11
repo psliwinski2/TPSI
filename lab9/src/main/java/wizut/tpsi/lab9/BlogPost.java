@@ -2,21 +2,24 @@ package wizut.tpsi.lab9;
 
 public class BlogPost {
 
-	private Long id;
+	private long id;
 	private String title;
 	private String content;
 
-	public BlogPost(Long id, String title, String content) {
+	public BlogPost() {
+	}
+
+	public BlogPost(long id, String title, String content) {
 		this.id = id;
 		this.title = title;
 		this.content = content;
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 
@@ -35,4 +38,5 @@ public class BlogPost {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 }
