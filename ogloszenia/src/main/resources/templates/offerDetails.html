@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html layout:decorate="layout" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org">
+
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet"/>
+
+<head>
+    <title th:text="${offer.title}">Szczegóły oferty</title>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+</head>
+<body>
+<section layout:fragment="content">
+    <h1 th:text="${offer.title}"></h1>
+    <h2>
+        Cena:
+        <span class="text-primary"
+              th:text="|${#numbers.formatDecimal(offer.price, 0, 'WHITESPACE', 0,'COMMA')} PLN|"></span>
+    </h2>
+
+    <table class="table" th:object="${offer}">
+        <tr>
+            <th>Marka:</th>
+            <td th:text="*{model.manufacturer.name}"></td>
+            <th>Nadwozie:</th>
+            <td th:text="|*{bodyStyle.name} *{doors}D|"></td>
+        </tr>
+        <tr>
+            <th>Model:</th>
+            <td th:text="*{model.name}"></td>
+            <th>Kolor:</th>
+            <td th:text="*{colour}"></td>
+        </tr>
+
+        <tr>
+            <th>Rok produkcji:</th>
+            <td th:text="*{year}"></td>
+            <th>Przebieg:</th>
+            <td th:text="|*{mileage} km|"></td>
+        </tr>
+
+        <tr>
+            <th>Pojemność silnika:</th>
+            <td th:text="*{engineSize}"></td>
+            <th>Moc silnika:</th>
+            <td th:text="|*{enginePower} KM|"></td>
+        </tr>
+
+        <tr>
+            <th>Rodzaj paliwa:</th>
+            <td th:text="*{fuelType.name}"></td>
+        </tr>
+
+
+    </table>
+    <div class="well" th:text="${offer.description}">
+    </div>
+
+    <div>
+        <a class="btn btn-danger" th:href="|/deleteoffer/${offer.id}|">Usuń ogłoszenie</a>
+        <a class="btn btn-primary" th:href="|/editoffer/${offer.id}|">Edytuj ogłoszenie</a>
+    </div>
+
+</section>
+</body>
+</html>
