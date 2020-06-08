@@ -1,20 +1,18 @@
 <!DOCTYPE html>
-<html layout:decorator="layout"
-      xmlns="http://www.w3.org/1999/xhtml"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
-      xmlns:th="http://www.thymeleaf.org">
+      layout:decorator="layout">
+      
 
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
-<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet"/>
-
-<link href="/css/sortable-theme-bootstrap.css" rel="stylesheet"/>
-<script src="/js/sortable.min.js"></script>
 
 <head>
     <title>Lista ofert</title>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" rel="stylesheet"/>
+	<link rel="stylesheet" href="/css/sortable-theme-bootstrap.css"/>
+	<script type="text/javascript" src="/js/sortable.min.js"></script>
 </head>
 <body>
 <section layout:fragment="content">
